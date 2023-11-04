@@ -11,6 +11,6 @@ import com.example.assn5.ui.screens.HomeScreen
 fun RootNavigation(){
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "home") {
-        composable(Routes.Home.route) { HomeScreen(navController = navController) }
+        composable(Routes.Home.route) { HomeScreen() }
     }
 }
