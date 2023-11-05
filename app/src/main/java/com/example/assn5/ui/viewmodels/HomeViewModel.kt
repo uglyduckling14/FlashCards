@@ -15,6 +15,7 @@ class HomeScreenState{
     var back by mutableStateOf("")
     var display by mutableStateOf("")
     var flipped by mutableStateOf(false)
+    var dragged by mutableStateOf(false)
 }
 class HomeViewModel(application: Application): AndroidViewModel(application) {
     val uiState = HomeScreenState()
