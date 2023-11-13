@@ -1,9 +1,7 @@
 package com.example.assn5.ui.screens
 
-import android.util.Log
 import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.gestures.awaitFirstDown
-import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.gestures.horizontalDrag
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -27,7 +25,6 @@ import androidx.compose.ui.input.pointer.positionChanged
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavHostController
 import com.example.assn5.ui.components.Card
 import com.example.assn5.ui.viewmodels.HomeViewModel
 import kotlinx.coroutines.coroutineScope
@@ -50,7 +47,7 @@ fun HomeScreen() {
 
     ) {
         val rotation = remember{ Animatable(0f) }
-        var offset = remember {
+        val offset = remember {
             Animatable(100f)
         }
         Row (modifier = Modifier
@@ -95,12 +92,12 @@ fun HomeScreen() {
                             }
                             launch {
                                 if(state.dragged){
-                                    if (offset.value < -50f && state.index != 19) {
+                                    if (offset.value < 0f && state.index != 19) {
                                         viewModel.setUpInitialState(state.index + 1)
                                         offset.animateTo(-50f)
                                         offsetX = 0f
                                         state.dragged = false
-                                    }else if(offset.value > 50f && state.index != 0){
+                                    }else if(offset.value > 0f && state.index != 0){
                                         viewModel.setUpInitialState(state.index-1)
                                         offset.animateTo(800f)
                                         offsetX = 0f
